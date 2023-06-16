@@ -1,5 +1,5 @@
 function Home(){
-    return <h1>Teste</h1>
+    return <h1>Um grande projeto está por vir</h1>
 }
 
 
