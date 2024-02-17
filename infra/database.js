@@ -8,7 +8,7 @@ async function query(queryObject) {
     database: process.env.POSTGRES_DB,
     password: process.env.POSTGRES_PASSWORD,
     idleTimeoutMillis: 100,
-    ssl: process.env.NODE_ENV === "development" ? false : true,
+    ssl: getSSL()
   });
 
   try {
@@ -26,3 +26,12 @@ async function query(queryObject) {
 export default {
   query: query,
 };
+
+function getSSL(){
+  if (process.env.POSTGRES_CA){
+    return {
+      ca: process.env.POSTGRES_CA,
+    };
+  }
+  return process.env.NODE_ENV === "development" ? false : true;
+}
