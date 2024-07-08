@@ -6,8 +6,8 @@
   "scripts": {
     "set-env": "npm run docker:up && npm run wait-for-postgres",
     "dev": "npm run set-env && npm run migration:up && next dev",
-    "lint:check": "prettier --check .",
-    "lint:fix": "prettier --write .",
+    "lint:prettier:check": "prettier --check .",
+    "lint:prettier:fix": "prettier --write .",
     "concurrent-base": "concurrently -n next,jest -s command-jest --hide next -k \"next dev\"",
     "test-concurrently": "npm run concurrent-base -- \"jest --runInBand\"",
     "test": "npm run set-env && npm run test-concurrently",
