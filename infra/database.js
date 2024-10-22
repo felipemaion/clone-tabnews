@@ -25,10 +25,12 @@ async function getNewClient() {
   await client.connect();
   return client;
 }
-export default {
+
+const database = {
   query,
   getNewClient,
 };
+export default database;
 
 function getSSL() {
   if (process.env.POSTGRES_CA) {
