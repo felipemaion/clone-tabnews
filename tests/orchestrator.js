@@ -13,7 +13,7 @@ async function waitForAllServices() {
       const responseBody = await response.json();
       if (response.status !== 200) {
         throw Error();
-        } else {
+      } else {
         return responseBody;
       }
     }
