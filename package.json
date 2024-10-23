@@ -7,6 +7,7 @@
     "set-env": "npm run services:up && npm run services:wait:database",
     "dev": "npm run set-env && npm run migrations:up && next dev",
     "test": "npm run set-env && npm run test:concurrently",
+    "posttest":"npm run services:stop",
     "test:concurrently": "npm run concurrent:base -- \"jest --runInBand\"",
     "test:concurrently:watch": "npm run concurrent:base -- \"jest --watchAll --runInBand\"",
     "test:watch": "npm run set-env && npm run test:concurrently:watch",
