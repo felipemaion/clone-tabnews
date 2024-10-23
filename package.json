@@ -6,6 +6,10 @@
   "scripts": {
     "set-env": "npm run services:up && npm run services:wait:database",
     "dev": "npm run set-env && npm run migrations:up && next dev",
+    "test": "npm run set-env && npm run test:concurrently",
+    "test:concurrently": "npm run concurrent-base -- \"jest --runInBand\"",
+    "test:concurrently:watch": "npm run concurrent-base -- \"jest --watchAll --runInBand\"",
+    "test:watch": "npm run set-env && npm run test:concurrently:watch",
     "services:up": "docker compose -f infra/compose.yaml up -d",
     "services:down": "docker compose -f infra/compose.yaml down",
     "services:stop": "docker compose -f infra/compose.yaml stop",
@@ -16,10 +20,6 @@
     "lint:prettier:fix": "prettier --write .",
     "lint:eslint:check": "next lint --dir .",
     "concurrent-base": "concurrently -n next,jest -s command-jest --hide next -k \"next dev\"",
-    "test-concurrently": "npm run concurrent-base -- \"jest --runInBand\"",
-    "test": "npm run set-env && npm run test-concurrently",
-    "test-concurrently-watch": "npm run concurrent-base -- \"jest --watchAll --runInBand\"",
-    "test:watch": "npm run set-env && npm run test-concurrently-watch",
     "prepare": "husky",
     "commit": "cz"
   },
