@@ -9,7 +9,7 @@ async function query(queryObject) {
     // Trate o erro aqui ou lance novamente para lidar em um nível superior
     throw new Error(`Erro ao executar a consulta: ${error.message}`);
   } finally {
-    await client.end(); // Garante que a conexão seja sempre encerrada
+    await client?.end(); // Garante que a conexão seja sempre encerrada
   }
 }
 async function getNewClient() {
